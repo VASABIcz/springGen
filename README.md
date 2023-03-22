@@ -45,8 +45,8 @@ data class AuthRequest(val password: String, val email: String)
 
 data class UserAccount(val id: Long, val email: String)
 
-class AuthAPI(private val _client: RequestFactory, private val _host: String, private val _secure: Boolean, private val _path: String = "/auth"){
-    fun SignUpPOST(REQUESTBODY: AuthRequest): UserToken?{
+class AuthAPI(private val _client: RequestFactory, private val _host: String, private val _secure: Boolean, private val _path: String = "/auth") {
+    fun SignUpPOST(REQUESTBODY: AuthRequest): UserToken? {
         return try {
             _client
                 .newRequest()
@@ -61,7 +61,7 @@ class AuthAPI(private val _client: RequestFactory, private val _host: String, pr
             _t.printStackTrace();null
         }
     }
-    fun testPOST(REQUESTBODY: UserAccount){
+    fun testPOST(REQUESTBODY: UserAccount) {
         try {
             _client
                 .newRequest()
@@ -75,7 +75,7 @@ class AuthAPI(private val _client: RequestFactory, private val _host: String, pr
             _t.printStackTrace()
         }
     }
-    fun signInPOST(REQUESTBODY: AuthRequest): UserToken?{
+    fun signInPOST(REQUESTBODY: AuthRequest): UserToken? {
         return try {
             _client
                 .newRequest()
@@ -89,7 +89,8 @@ class AuthAPI(private val _client: RequestFactory, private val _host: String, pr
         } catch(_t: Throwable) {
             _t.printStackTrace(); null
         }
-    }fun meGET(): UserAccount?{
+    }
+    fun meGET(): UserAccount? {
         return try {
             _client
                 .newRequest()
