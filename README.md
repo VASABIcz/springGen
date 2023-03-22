@@ -22,9 +22,6 @@ public class UserAccount {
 @RestController
 @RequestMapping("/auth")
 public class Auth {
-    @Autowired
-    AuthService authService;
-
     @PostMapping("/signup")
     public UserToken SignUp(@RequestBody AuthRequest req);
 
