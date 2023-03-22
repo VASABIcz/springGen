@@ -1,6 +1,6 @@
-package cz.vasabi.boikend.RouteGen.values;
+package RouteGen.values;
 
-import cz.vasabi.boikend.RouteGen.ValueType;
+import RouteGen.ValueType;
 
 public class DoubleValue implements Value {
     @Override

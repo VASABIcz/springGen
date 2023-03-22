@@ -1,9 +1,6 @@
-package cz.vasabi.boikend.RouteGen.values;
+package RouteGen.values;
 
-import cz.vasabi.boikend.RouteGen.GenericType;
-import cz.vasabi.boikend.RouteGen.values.BoolValue;
-
-import java.lang.reflect.ParameterizedType;
+import RouteGen.GenericType;
 
 public interface ParseType {
     Value parse(GenericType type);

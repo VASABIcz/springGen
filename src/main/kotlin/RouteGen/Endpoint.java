@@ -1,4 +1,4 @@
-package cz.vasabi.boikend.RouteGen;
+package RouteGen;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

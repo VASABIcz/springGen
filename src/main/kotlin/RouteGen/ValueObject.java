@@ -1,11 +1,10 @@
-package cz.vasabi.boikend.RouteGen;
+package RouteGen;
 
+import RouteGen.values.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import cz.vasabi.boikend.RouteGen.values.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package cz.vasabi.boikend.RouteGen;
+package RouteGen;
 
 public enum ValueType {
     String,

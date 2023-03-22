@@ -1,4 +1,4 @@
-package cz.vasabi.boikend.RouteGen;
+package RouteGen;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,11 +1,6 @@
-package cz.vasabi.boikend.RouteGen
+package RouteGen
 
-import cz.vasabi.boikend.RouteGen.values.ArrayValue
-import cz.vasabi.boikend.RouteGen.values.MapValue
-import cz.vasabi.boikend.RouteGen.values.ObjectValue
-import cz.vasabi.boikend.RouteGen.values.Value
-import cz.vasabi.boikend.RouteGen.values.VoidValue
-import cz.vasabi.boikend.entities.UserToken
+import RouteGen.values.*
 import org.springframework.http.HttpMethod
 
 val generatedClasses = mutableSetOf<String>()
@@ -26,28 +21,6 @@ interface RequestBuilder {
 interface RequestResponse {
     fun code(): Int
     fun <T> getResponse(cls: Class<T>): T
-}
-
-data class AuthRequest(val password: String, val email: String)
-
-
-class AuthAPI(private val _client: RequestFactory, private val _host: String, private val _secure: Boolean, private val _path: String = "/auth") {
-    fun signUpPost(reqBody: AuthRequest): UserToken? {
-        return try {
-            _client
-                .newRequest()
-                .setHost(_host)
-                .setRoute("$_path/signup")
-                .setSecure(_secure)
-                .setMethod(HttpMethod.POST)
-                .setBody(reqBody)
-                .send()
-                .getResponse(UserToken::class.java)
-        }
-        catch (t: Throwable) {
-            null
-        }
-    }
 }
 
 fun buildClass(clazz: ObjectValue): String? {
@@ -113,11 +86,6 @@ fun buildReturnEndpoint(endpoint: Endpoint): String {
 
     // FIXME
     var body = "_client.newRequest().setHost(_host).setSecure(_secure).setMethod(HttpMethod.${endpoint.method.first()}).setRoute(\"\$_path${endpoint.path}\")"
-    /*
-    fun <T> setBody(body: T): RequestBuilder
-    fun <T> setQuery(name: String, value: T): RequestBuilder
-    fun <T> setPathVariable(name: String, value: T): RequestBuilder
-     */
 
     endpoint.pathParameters.forEach {
         body += ".setBody(\"${valueTypeToString(it.value.value)}\", ${it.key}PATH)"
@@ -207,6 +175,3 @@ fun generate(group: RequestGroup): String {
     println(r)
     return ""
 }
-
-data class UserToken(val user: String,val token: String)
-data class UserAccount(val id: Long,val email: String)
